@@ -1,0 +1,2 @@
+C:\Users\eci\source\repos\Installer\SMARTRM6\bin\Debug\en-us\SMARTRM6.msi
+C:\Users\eci\source\repos\Installer\SMARTRM6\bin\Debug\en-us\SMARTRM6.wixpdb

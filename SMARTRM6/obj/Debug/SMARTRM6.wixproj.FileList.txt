@@ -1,0 +1,11 @@
+obj\Debug\pth2EB2F2AB58BD07F993FD22C4AD0E194A\Product.wixobj
+obj\Debug\pth2EB2F2AB58BD07F993FD22C4AD0E194A\Features.wixobj
+obj\Debug\pth2EB2F2AB58BD07F993FD22C4AD0E194A\IISMeta.wixobj
+obj\Debug\pth2EB2F2AB58BD07F993FD22C4AD0E194A\UI.wixobj
+obj\Debug\pth2EB2F2AB58BD07F993FD22C4AD0E194A\Custom_ExitDlg.wixobj
+C:\Users\eci\source\repos\Installer\SMARTRM6\bin\Debug\en-us\SMARTRM6.msi
+C:\Users\eci\source\repos\Installer\SMARTRM6\bin\Debug\en-us\SMARTRM6.wixpdb
+obj\Debug\SMARTRM6.wixproj.BindContentsFileListen-us.txt
+obj\Debug\SMARTRM6.wixproj.BindOutputsFileListen-us.txt
+obj\Debug\SMARTRM6.wixproj.BindBuiltOutputsFileListen-us.txt
+obj\Debug\pth2EB2F2AB58BD07F993FD22C4AD0E194A\Custom_WelcomeDlg.wixobj

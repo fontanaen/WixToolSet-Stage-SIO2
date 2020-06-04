@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  
+  <!-- Custom Default Dialogs Controls (size/position)-->
+  <UI Dialog="InstallDirDlg" Control="Description"  Height="20" Width="250"/>
+
+  <!-- Custom Default Dialogs Controls (string)-->
+  <String Id="InstallDirDlgDescription" Overridable="yes">/!\ Make sure you've all rights on your hard drive disk. Click Next to install to the default folder or click Change to choose another.</String>
+  <String Id="InstallDirDlgFolderLabel" Overridable="yes">Install [ProductName] to:</String>
+</WixLocalization>

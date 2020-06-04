@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!-- 
+  MSIProductVersion is defined in SMARTRM6.wixproj as 0.0.1 for local desktop builds.  
+  You should pass in the MSBuild Property 'MSIProductVersion' to override it during an automated build.
+  See http://msdn.microsoft.com/en-us/library/windows/desktop/aa370859%28v=vs.85%29.aspx for information on allowable values.
+  
+  The Product@Id attribute (ProductCode Property) will be a random GUID for each build.  This is to support "Major Upgrades" where each install 
+  is a seamless uninstall/reinstall.
+  -->
+  <Product Id="*" Name="SMARTRM6" Language="1033" Version="$(var.MSIProductVersion)" Manufacturer="HARDIS" UpgradeCode="73fae12b-c75c-45b8-a4e3-dffbd62d2aa4">
+    <Package InstallerVersion="301" Compressed="yes"/>
+    <MediaTemplate EmbedCab="yes" />
+
+    <!-- Include WixUI Installdir to the project -->
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
+    
+    <!-- Major Upgrade Rule to disallow downgrades -->
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+    <!--Common Launch Condition-->
+    <!-- Examples at http://wixtoolset.org/documentation/manual/v3/customactions/wixnetfxextension.html -->
+    <PropertyRef Id="NETFRAMEWORK40FULL"/>
+    <Condition Message="[ProductName] requires .NET Framework 4.0.">Installed OR NETFRAMEWORK40FULL</Condition>
+
+    <!-- Include User Interface Experience -->
+    <Icon Id="Icon.ico" SourceFile="Resources\Icon.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="Icon.ico"></Property>
+
+    <!-- Install scope -->
+    <Property Id="ALLUSERS" Secure="yes" Value="1" />
+    <Property Id="CHOOSE_USERS" Value="1"/>
+
+
+    <!-- Include Features and Directories Fragment -->
+    <DirectoryRef Id="INSTALLLOCATION"/>
+
+    
+    <!-- Refere custom sequence -->
+     <UIRef Id="WixUI_Sequence"/>
+     <UIRef Id="Custom_ExitDlg"/>
+     <UIRef Id="Custom_WelcomeDlg"/>
+
+    <!-- Launch msi package for LocalDB -->
+    
+    <Property Id="LOCALDB" Secure="yes"/>
+    <Property Id="STARTAPPLICATION" Value="1"/>
+
+    <Binary Id="LAUNCH_LOCALDB.CA.dll" SourceFile="..\LAUNCH_LOCALDB\bin\$(var.Configuration)\LAUNCH_LOCALDB.CA.dll" />
+
+    <CustomAction Id="Launch_LocalDB" Return="check" Execute="immediate" Impersonate="yes" BinaryKey="LAUNCH_LOCALDB.CA.dll" DllEntry="Launch_LocalDB" />
+    
+    <!--<InstallExecuteSequence>
+      <Custom Action="Launch_LocalDB" After="InstallFinalize">NOT Installed AND NOT UPGRADINGPRODUCTCODE</Custom>
+    </InstallExecuteSequence>-->
+
+  </Product>
+</Wix>
